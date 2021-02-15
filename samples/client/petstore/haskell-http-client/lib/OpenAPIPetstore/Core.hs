@@ -173,7 +173,7 @@ rAuthTypesL f OpenAPIPetstoreRequest{..} = (\rAuthTypes -> OpenAPIPetstoreReques
 
 -- | Designates the body parameter of a request
 class HasBodyParam req param where
-  setBodyParam :: forall contentType res accept. (Consumes req contentType, MimeRender contentType param) => OpenAPIPetstoreRequest req contentType res accept -> param -> OpenAPIPetstoreRequest req contentType res accept
+  setBodyParam :: forall contentType res accept. Consumes req contentType param => OpenAPIPetstoreRequest req contentType res accept -> param -> OpenAPIPetstoreRequest req contentType res accept
   setBodyParam req xs =
     req `_setBodyLBS` mimeRender (P.Proxy :: P.Proxy contentType) xs & _setContentTypeHeader
 

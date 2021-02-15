@@ -52,7 +52,7 @@ data Accept a = MimeType a => Accept { unAccept :: a }
 
 -- * Consumes Class
 
-class MimeType mtype => Consumes req mtype where
+class MimeRender mtype x => Consumes req mtype x where
 
 -- * Produces Class
 
